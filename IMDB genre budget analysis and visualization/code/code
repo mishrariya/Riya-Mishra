@@ -1,1 +1,44 @@
+import sqlite3
+import matplotlib.pyplot as plt
 
+# Connect to the database
+conn = sqlite3.connect('IMDB.sqlite')
+cursor = conn.cursor()
+
+# Replace empty budget column with zero
+cursor.execute("UPDATE IMDB SET budget = 0 WHERE budget = '';")
+
+# Query to calculate the total budget for each genre (excluding rows with no genre)
+cursor.execute("""
+    SELECT genre.genre, SUM(IMDB.budget)
+    FROM IMDB
+    JOIN genre ON IMDB.Movie_id = genre.Movie_id
+    WHERE genre.genre <> ''
+    GROUP BY genre.genre
+""")
+
+rows = cursor.fetchall()
+total_budget = sum(row[1] for row in rows)
+
+# Calculate the percentage for each genre
+genre_percentages = []
+for row in rows:
+    genre = row[0]
+    budget = row[1]
+    percentage = (budget / total_budget) * 100
+    genre_percentages.append((genre, percentage))
+
+# Sort the genre percentages by percentage in descending order
+genre_percentages.sort(key=lambda x: x[1], reverse=True)
+
+# Print genre and percentage with 2 decimal places
+for genre, percentage in genre_percentages:
+    print(genre, f'{percentage:.2f}')
+
+# Plotting the pie chart
+labels = [genre for genre, _ in genre_percentages]
+percentages = [percentage for _, percentage in genre_percentages]
+
+plt.pie(percentages, labels=labels, autopct='%1.2f%%')
+plt.axis('equal')
+plt.show()
