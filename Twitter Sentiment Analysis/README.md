@@ -7,10 +7,10 @@ Sentiment analysis involves determining the sentiment or emotion expressed in a 
 ## Preprocessing
 The text data undergoes several preprocessing steps:
 
-** Tokenization **: Splitting the text into individual words or tokens.
-** Lowercasing **: Converting all tokens to lowercase to ensure uniformity.
-** Stopword Removal **: Removing common words like "and," "the," etc. that do not carry significant meaning.
-** Non-Alphabetic Token Removal **: Removing tokens that are not composed of alphabetic characters.
+**Tokenization**: Splitting the text into individual words or tokens.
+**Lowercasing**: Converting all tokens to lowercase to ensure uniformity.
+**Stopword Removal**: Removing common words like "and," "the," etc. that do not carry significant meaning.
+**Non-Alphabetic Token Removal**: Removing tokens that are not composed of alphabetic characters.
 
 ## Model
 A Logistic Regression model is used for sentiment classification. The TF-IDF (Term Frequency-Inverse Document Frequency) vectorizer is employed to convert text data into numerical vectors. These vectors are used as input to the Logistic Regression classifier.
