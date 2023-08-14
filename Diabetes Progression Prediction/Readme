@@ -1,1 +1,2 @@
-
+## Diabetes Progression Prediction
+This file contains code that performs linear regression for predicting for predicting diabetes progression based on input features. The dataset used in this project includes training and testing data, and the goal is to train a Linear Regression model to predict diabetes progression and evaluate its performance.
