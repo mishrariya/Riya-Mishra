@@ -16,4 +16,4 @@ The text data undergoes several preprocessing steps:
 A Logistic Regression model is used for sentiment classification. The TF-IDF (Term Frequency-Inverse Document Frequency) vectorizer is employed to convert text data into numerical vectors. These vectors are used as input to the Logistic Regression classifier.
 
 ## Results
-The accuracy of the model is calculated by comparing the predicted sentiment labels to the true labels of the test data. The accuracy score obtained is approximately ** 80% **.
+The accuracy of the model is calculated by comparing the predicted sentiment labels to the true labels of the test data. The accuracy score obtained is approximately **80%**.
